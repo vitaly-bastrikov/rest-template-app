@@ -14,7 +14,7 @@ public class RestController {
     RestTemplate restTemplate;
     @GetMapping
     public String RestHelloWorld(){
-        String baseUrl = "http://hello-world-bastrikov-dev.apps.sandbox.x8i5.p1.openshiftapps.com/";
+        String baseUrl = "http://172.30.123.204:8080";
         return restTemplate.getForObject(baseUrl,String.class);
 
     }
