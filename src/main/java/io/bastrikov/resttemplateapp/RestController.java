@@ -1,6 +1,7 @@
 package io.bastrikov.resttemplateapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +13,13 @@ public class RestController {
 
     @Autowired
     RestTemplate restTemplate;
+
+    @Value("${redirectHost:localhost:8080}")
+    String redirectHost;
+
     @GetMapping
     public String RestHelloWorld(){
-        String baseUrl = "http://172.30.123.204:8080";
+        String baseUrl = "http://" + redirectHost;
         return restTemplate.getForObject(baseUrl,String.class);
 
     }
